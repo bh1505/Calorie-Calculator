@@ -86,8 +86,8 @@ An Example catalog (dictionary) with Embedded Items:
 
 ## User Stories or Use Cases
 
-1. As a non-registered user, I can register a new account with site
-2. As a user, I can log in to the site
+1. As a non-registered user, I can register a new account with site.
+2. As a user, I can log in to the site.
 3. As a user, I can add a new entry to my catalog, inputting my goals for today's date.
 4. As a user, I can populate this new entry with food items I have ate throughout the day.
 5. As a user, I can view what I have eaten today, my goals for the day, the amount of calories I
