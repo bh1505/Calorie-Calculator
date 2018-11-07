@@ -54,3 +54,5 @@ An Example catalog (dictionary) with Embedded Items:
 }
 ```
 
+## [Link to Commented First Draft Schema](src/db.js)
+
