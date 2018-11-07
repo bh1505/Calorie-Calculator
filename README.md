@@ -56,3 +56,42 @@ An Example catalog (dictionary) with Embedded Items:
 
 ## [Link to Commented First Draft Schema](src/db.js)
 
+## Wireframes
+
+(TODO: wireframes for all of the pages on your site; they can be as simple as photos of drawings or you can use a tool like Balsamiq, Omnigraffle, etc.)
+
+/login 
+
+![alt text](documentation/login.jpg)
+
+/goals
+
+![alt text](documentation/goals.jpg)
+
+/home 
+
+![alt text](documentation/home.jpg)
+
+/add
+
+![alt text](documentation/add.jpg)
+
+/lookup
+
+![alt text](documentation/lookup.jpg)
+
+## Site map
+
+![alt text](documentation/sitemap.jpg)
+
+## User Stories or Use Cases
+
+1. As a non-registered user, I can register a new account with site
+2. As a user, I can log in to the site
+3. As a user, I can add a new entry to my catalog, inputting my goals for today's date.
+4. As a user, I can populate this new entry with food items I have ate throughout the day.
+5. As a user, I can view what I have eaten today, my goals for the day, the amount of calories I
+have ate, and the amount of money I have spent.
+6. As a user, I can lookup previous entries in my catalog by providing a past date.
+
+## Research Topics
