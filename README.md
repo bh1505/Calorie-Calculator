@@ -25,8 +25,32 @@ The application will store Users and a dictionary-like object for each user.
 The dictionary object will have keys set to the specified date of the catalog entry.
 Each key will be mapped to a list of foods (items) the user has ate on that day.
 The lists will also contain properties:
-- calorieGoal 
+- calorieGoal (the caloric goal for the day)
 - calorieCount (the current caloric count for the day)
-- moneyGoal
+- moneyGoal (the monetary goal for the day)
 - moneyCount (the current monetary count for the day)
+
+(TODO: sample documents)
+
+An Example User:
+
+```
+{
+  username: "user123",
+  hash: //password hash,
+  catalog: //an object with key (date) and value (list of food items) pairs
+}
+```
+
+An Example catalog (dictionary) with Embedded Items:
+
+```
+{
+  username: //user,
+  catalog: { '2018-11-07' : [ {name: "cookie", time: "20", price: "2", cals: "250"},
+                              {name: "chicken and rice", time: "14", price: "10", cals: "500"} ],
+             '2018-11-06' : [ {name: "Chipotle Burrito", time: "12", price: "10", cals: "800"} ]
+           }
+}
+```
 
