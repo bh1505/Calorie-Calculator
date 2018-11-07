@@ -62,7 +62,7 @@ An Example catalog (dictionary) with Embedded Items:
 
 /login 
 
-![alt text](documentation/login.pdf)
+![alt text](documentation/login.pdf?raw=true "login")
 
 /goals
 
