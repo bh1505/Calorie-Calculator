@@ -62,27 +62,27 @@ An Example catalog (dictionary) with Embedded Items:
 
 /login 
 
-![alt text](documentation/login.jpg)
+![alt text](documentation/login.pdf)
 
 /goals
 
-![alt text](documentation/goals.jpg)
+![alt text](documentation/goals.pdf)
 
 /home 
 
-![alt text](documentation/home.jpg)
+![alt text](documentation/home.pdf)
 
 /add
 
-![alt text](documentation/add.jpg)
+![alt text](documentation/add.pdf)
 
 /lookup
 
-![alt text](documentation/lookup.jpg)
+![alt text](documentation/lookup.pdf)
 
 ## Site map
 
-![alt text](documentation/sitemap.jpg)
+![alt text](documentation/sitemap.pdf)
 
 ## User Stories or Use Cases
 
