@@ -14,5 +14,19 @@ of the food, the time it was consumed, the price, and most importantly, the tota
 to add new items, the app will notify the user on certain milestones, such as "You have reached half of your goal!" or 
 "That just put you over your goal!". The user will be able to moderate their choices via a counter that displays how many 
 more calories they have left to reach their goal as well as another one that displays their total amount of money spent.
-For each day a user completes, that information will be stored so the user may track their overall progress.
+For each day a user completes, that information will be stored so the user may
+look up their activity for a specific day or track their overall progress.
+
+## Data Model
+
+(TODO: a description of your application's data and their relationships to each other)
+
+The application will store Users and a dictionary-like object for each user.
+The dictionary object will have keys set to the specified date of the catalog entry.
+Each key will be mapped to a list of foods (items) the user has ate on that day.
+The lists will also contain properties:
+-calorieGoal 
+-calorieCount (the current caloric count for the day)
+-moneyGoal
+-moneyCount (the current monetary count for the day)
 
