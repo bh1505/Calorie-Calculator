@@ -17,7 +17,9 @@
   },
   "homepage": "https://github.com/nyu-csci-ua-0480-001-003-fall-2018/bh1505-final-project#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "express": "^4.16.4",
+    "express-session": "^1.15.6",
     "hbs": "^4.0.1",
     "mongoose": "^5.3.10"
   }
