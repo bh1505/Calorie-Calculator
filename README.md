@@ -107,11 +107,11 @@ have ate, and the amount of money I have spent.
   - I am a bit familiar with Bootstrap.
   - I want to use it to give my site some life and pleasing to look at.
   - I intend to configure a theme. 
- - (3 points) Perform client side form validation 
+- (3 points) Perform client side form validation 
   - Since my app requires several entries from the user when adding a new food item, for example,
   form validation is important in maintaining consistent data, especially when summing today's calories eaten.
   - For example, if you put value for Time greater than 23, an error message will appear in the DOM.
- - (1 point) Use jQuery as an external API
+- (1 point) Use jQuery as an external API
   - Will use it to create simple animated notifications, such as when the user surpasses their caloric goal.
  
  11 points out of 8 required points.
