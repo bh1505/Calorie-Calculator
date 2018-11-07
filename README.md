@@ -25,8 +25,8 @@ The application will store Users and a dictionary-like object for each user.
 The dictionary object will have keys set to the specified date of the catalog entry.
 Each key will be mapped to a list of foods (items) the user has ate on that day.
 The lists will also contain properties:
--calorieGoal 
--calorieCount (the current caloric count for the day)
--moneyGoal
--moneyCount (the current monetary count for the day)
+- calorieGoal 
+- calorieCount (the current caloric count for the day)
+- moneyGoal
+- moneyCount (the current monetary count for the day)
 
