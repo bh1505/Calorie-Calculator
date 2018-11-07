@@ -54,7 +54,7 @@ An Example catalog (dictionary) with Embedded Items:
 }
 ```
 
-## [Link to Commented First Draft Schema](src/db.js)
+## [Link to Commented First Draft Schema](db.js)
 
 ## Wireframes
 
@@ -104,5 +104,5 @@ have ate, and the amount of money I have spent.
  
  11 points out of 8 required points.
  
- ## [Link to Initial Main Project File](src/app.js)
+ ## [Link to Initial Main Project File](app.js)
 
