@@ -3,8 +3,8 @@
 ## Overview
 
 Calorie Calculator is a web app that will allow users to keep track of the number of calories they have eaten on a given day. 
-Users will be allowed to register their own accounts where they can input their own caloric and 
-monetary goals for the day and add foods they have have eaten throughout the day in personal catalog. 
+Users will be allowed to register their own accounts where they can input their daily caloric and 
+monetary goals and add the foods they have have eaten throughout the day in a personal catalog. 
 This app will be a useful tool for those who are aiming to cut down on weight, to gain muscle, or to manage their expenses.
 
 Each user will have their own catalog and will have the ability to set caloric and monetary goals for the day. 
