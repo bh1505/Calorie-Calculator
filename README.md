@@ -60,29 +60,17 @@ An Example catalog (dictionary) with Embedded Items:
 
 (TODO: wireframes for all of the pages on your site; they can be as simple as photos of drawings or you can use a tool like Balsamiq, Omnigraffle, etc.)
 
-/login 
+[/login](documentation/login.pdf)
 
-![Screenshot](documentation/login.pdf)
+[/goals](documentation/goals.pdf)
 
-/goals
+[/home](documentation/home.pdf)
 
-![alt text](documentation/goals.pdf)
+[/add](documentation/add.pdf)
 
-/home 
+[/lookup](documentation/lookup.pdf)
 
-![alt text](documentation/home.pdf)
-
-/add
-
-![alt text](documentation/add.pdf)
-
-/lookup
-
-![alt text](documentation/lookup.pdf)
-
-## Site map
-
-![alt text](documentation/sitemap.pdf)
+## [Link to Site map](documentation/sitemap.pdf)
 
 ## User Stories or Use Cases
 
