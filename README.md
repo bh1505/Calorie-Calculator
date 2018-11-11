@@ -85,7 +85,7 @@ have ate, and the amount of money I have spent.
 ## Research Topics
 
 - (5 points) Integrate user authentication 
-  - I will use bcrypt.js in order to hash passwords. 
+  - I will use Passport. 
   - I have decided to use this so multiple people can use this app since no two people will
   have the same food history. 
   - Calorie Calculator involves private information that people may
