@@ -6,6 +6,9 @@
 		<header>
 			<title>Calorie Calculator</title>
 			<h1>CALORIE CALCULATOR</h1>
+			{{#if user}}
+				<i>Logged in as {{user.username}}</i>
+			{{/if}}
 		</header>
 		<body>
 				<!-- specifies where your template goes -->

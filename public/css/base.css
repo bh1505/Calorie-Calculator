@@ -10,3 +10,18 @@ table {
 	margin-left: auto;
     margin-right: auto;
 }
+
+i {
+	position: absolute;
+	top: 0;
+	right: 0;
+	padding-top: 5px;
+	padding-right: 5px;
+	text-align: right;
+}
+
+div.error {
+	background-color: rgb(255, 199, 206);	
+	display:inline-block;
+	font-family: Courier;
+}
