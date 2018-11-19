@@ -20,6 +20,15 @@ i {
 	text-align: right;
 }
 
+a.logout {
+	position: absolute;
+	top: 0;
+	right: 0;
+	padding-top: 25px;
+	padding-right: 5px;
+	text-align: right;
+}
+
 div.error {
 	background-color: rgb(255, 199, 206);	
 	display:inline-block;
