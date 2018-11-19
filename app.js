@@ -30,7 +30,7 @@ const sessionOptions = {
 app.use(session(sessionOptions));
 
 
-app.use("/goals", function(req, res, next) {
+app.use(function(req, res, next) {
 	if (req.session.catalog === undefined) {
 		req.session.catalog = {};
 	}
@@ -85,6 +85,7 @@ app.post('/add', function(req, res) {
 	});
 });
 
-app.listen(3000);
+app.listen(process.env.PORT || 3000);
+
 
 console.log("Connected to server");
