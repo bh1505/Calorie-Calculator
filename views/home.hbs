@@ -1,5 +1,27 @@
 Date: {{todayCat.date}}
+<br><br>
+Calorie Goal: {{todayCat.calGoal}} &nbsp &nbsp 
+Monetary Goal: ${{todayCat.monGoal}}
 <br>
-Calorie Goal: {{todayCat.calGoal}} 
-<br>
-Monetary Goal: {{todayCat.monGoal}}
+Current Calories: {{todayCat.curCal}} &nbsp &nbsp
+Current $ Spent: ${{todayCat.curMon}} <br><br>
+
+<a href="/add">Add Food Entry</a> <br><br>
+
+<table style="width:50%">
+  <tr>
+    <th>NAME</th>
+    <th>TIME</th> 
+    <th>PRICE</th>
+    <th>CALORIES</th>
+  </tr>
+{{#each foods}}
+	<tr>
+		<td>{{this.name}}</td>
+		<td>{{this.time}}</td>
+		<td>{{this.price}}</td>
+		<td>{{this.cals}}</td>
+	</tr>
+{{/each}}
+
+</table>

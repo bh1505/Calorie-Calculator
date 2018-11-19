@@ -7,6 +7,7 @@ require('./db.js');
 const mongoose = require('mongoose');
 const User = mongoose.model('User');
 const Catalog = mongoose.model('Catalog');
+const Food = mongoose.model('Food');
 
 //let todayCat = {};
 
@@ -28,15 +29,6 @@ const sessionOptions = {
 };
 app.use(session(sessionOptions));
 
-//create Food entries and add to catalog
-class Food {
-	constructor (name, time, price, cals) {
-		this.name = name;
-		this.time = time;
-		this.price = price;
-		this.cals = cals;
-	}
-}
 
 app.use("/goals", function(req, res, next) {
 	if (req.session.catalog === undefined) {
@@ -53,7 +45,9 @@ app.post('/goals', function(req, res) {
 	new Catalog({
 		date: req.body.date,
 		calGoal: req.body.cal,
-		monGoal: req.body.mon
+		monGoal: req.body.mon,
+		curCal: 0,
+		curMon: 0
 	}).save( (err, cat) => {
 		//console.log(err);
 		req.session.catalog = cat;
@@ -62,7 +56,33 @@ app.post('/goals', function(req, res) {
 });
 
 app.get('/home', function(req, res) {
-	res.render('home', {"todayCat": req.session.catalog});
+	res.render('home', {"todayCat": req.session.catalog,
+		"foods": req.session.catalog.foods});
+});
+
+app.get('/add', function(req, res) {
+	res.render('add');
+});
+
+app.post('/add', function(req, res) {
+	new Food({
+		name: req.body.name,
+		time: req.body.time,
+		price: req.body.price,
+		cals: req.body.cals
+	}).save( (err, food) => {
+		req.session.catalog.foods.push(food);
+		req.session.catalog.curCal += Number(req.body.cals);
+		req.session.catalog.curMon += Number(req.body.price);
+		//update catalog
+		Catalog.findOne({date: req.session.catalog.date}, (err, cat) => {
+			cat.foods.push(food);
+			cat.save( function(err, c) {
+				console.log(c);
+			});
+		});
+		res.redirect('/home');
+	});
 });
 
 app.listen(3000);
