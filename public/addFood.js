@@ -1,3 +1,4 @@
+//funciton passed into check, used to add a new error to the DOM
 function handleErr(what) {
 	const div = document.querySelector('#foodErr');
 	const notif = document.createElement('p');
@@ -12,6 +13,7 @@ function handleErr(what) {
 	div.classList.add("alert");
 }
 
+//higher order function for discovering any errors in form submission
 function check(validHelper) {
 	const name = document.myform2.name.value;
 	const time = document.myform2.time.value;

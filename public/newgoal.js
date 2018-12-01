@@ -1,3 +1,4 @@
+//funciton passed into isCorrect, used to add a new error to the DOM
 function displayErr(what) {
 	const div = document.querySelector('#err');
 	const notif = document.createElement('p');
@@ -12,6 +13,7 @@ function displayErr(what) {
 	div.classList.add("alert");
 }
 
+//higher order function for discovering any errors in form submission
 function isCorrect(validHelper) {
 	const cal = document.myform1.cal.value;
 	const mon = document.myform1.mon.value;

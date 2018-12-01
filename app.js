@@ -2,7 +2,6 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const session = require('express-session');
-//const jquery = require('jquery');
 
 require('./db.js');
 require('./auth');
@@ -10,7 +9,6 @@ const passport = require('passport');
 const mongoose = require('mongoose');
 const User = mongoose.model('User');
 const Catalog = mongoose.model('Catalog');
-//const Food = mongoose.model('Food');
 
 //class for each new Food entry
 class Food {
@@ -60,6 +58,7 @@ app.get('/', function(req, res) {
 })
 
 app.get('/login', function(req, res) {
+	//if logged in already, go to goals
 	if (req.user) {
 		res.redirect('/goals');
 	} else {
@@ -68,6 +67,7 @@ app.get('/login', function(req, res) {
 });
 
 app.post('/login', function(req, res) {
+	//passport authentication (login)
 	passport.authenticate('local', function(err,user) {
     if(user) {
       req.logIn(user, function(err) {
@@ -116,7 +116,7 @@ app.get('/goals', function(req, res) {
 	if (!req.user) {
 		res.redirect('/login');
 	} else {
-		//check if currently working on catalog
+		//upload current catalog, otherwise ask for new entry
 		const obj = req.user.catalogs[req.user.catalogs.length-1];
 		if (obj === undefined) {
 			res.render('goals');
@@ -158,6 +158,7 @@ app.get('/home', function(req, res) {
 });
 
 app.post('/home', function (req, res) {
+	//mark latest catalog as completed
 	req.user.catalogs[req.user.catalogs.length-1].completed = true;
 	req.user.save();
 	res.redirect('/goals');
@@ -172,18 +173,18 @@ app.get('/add', function(req, res) {
 });
 
 app.post('/add', function(req, res) {
-		const f = new Food (req.body.name, req.body.time, req.body.price, req.body.cals);
-		req.session.catalog.foods.push(f);
-		req.session.catalog.curCal += Number(req.body.cals);
-		req.session.catalog.curMon += Number(req.body.price);
-		//update user's catalog
-		req.user.catalogs[req.user.catalogs.length-1].foods.push(f);
-		req.user.catalogs[req.user.catalogs.length-1].curMon +=  Number(f.price);
-		req.user.catalogs[req.user.catalogs.length-1].curCal +=  Number(f.cals);
-		req.user.save();
+	//add new food item to the session and user
+	const f = new Food (req.body.name, req.body.time, req.body.price, req.body.cals);
+	req.session.catalog.foods.push(f);
+	req.session.catalog.curCal += Number(req.body.cals);
+	req.session.catalog.curMon += Number(req.body.price);
+	//update user's catalog
+	req.user.catalogs[req.user.catalogs.length-1].foods.push(f);
+	req.user.catalogs[req.user.catalogs.length-1].curMon +=  Number(f.price);
+	req.user.catalogs[req.user.catalogs.length-1].curCal +=  Number(f.cals);
+	req.user.save();
 
-		
-		res.redirect('/home');
+	res.redirect('/home');
 });
 
 app.get('/lookup', function (req, res) {
@@ -196,7 +197,7 @@ app.get('/lookup', function (req, res) {
 
 app.post('/lookup', function (req, res) {
 	const cats = req.user.catalogs;
-	//console.log(cats);
+	//filter user's catalogs for specific date entry
 	const result = cats.filter(x => {
 		//filter by date specified
 		const date = {

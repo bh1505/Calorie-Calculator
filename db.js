@@ -15,24 +15,16 @@ const Catalog = new mongoose.Schema({
 
 //schema for new User
 const User = new mongoose.Schema({
-	//username: String,
-	//hash: //hash from bcrypt,
+	//username: provided by passport
+	//password: provided by passport
 	catalogs: [Catalog] //dictionary like object to store dates mapped to lists of food
 
 });
-
-/*const Food = new mongoose.Schema({
-	name: String,
-	time: String,
-	price: Number,
-	cals: Number
-});*/
 
 User.plugin(passportLocalMongoose);
 
 mongoose.model("User", User);
 mongoose.model("Catalog", Catalog);
-//mongoose.model("Food", Food);
 
 // is the environment variable, NODE_ENV, set to PRODUCTION? 
 let dbconf;

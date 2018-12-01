@@ -1,4 +1,4 @@
-
+//funciton passed into validate, used to add a new error to the DOM
 function displayErr(what) {
 	const div = document.querySelector('#errmessage');
 	const notif = document.createElement('p');
@@ -12,7 +12,7 @@ function displayErr(what) {
 	div.classList.remove("handle");
 	div.classList.add("alert");
 }
-
+//higher order function for discovering any errors in form submission
 function validate(validHelper) {
 	const y = document.myform.year.value;
 	const m = document.myform.month.value;
