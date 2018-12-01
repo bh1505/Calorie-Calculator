@@ -29,8 +29,26 @@ a.logout {
 	text-align: right;
 }
 
+div.handle {
+	display: none;
+}
+
+div.alert {
+	background-color: red;
+	color: white;
+	margin: auto;
+	width: 30%;
+}
+
 div.error {
 	background-color: rgb(255, 199, 206);	
 	display:inline-block;
 	font-family: Courier;
 }
+
+
+
+
+
+
+

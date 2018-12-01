@@ -60,7 +60,11 @@ app.get('/', function(req, res) {
 })
 
 app.get('/login', function(req, res) {
-	res.render('login');
+	if (req.user) {
+		res.redirect('/goals');
+	} else {
+		res.render('login');
+	}
 });
 
 app.post('/login', function(req, res) {
@@ -76,7 +80,11 @@ app.post('/login', function(req, res) {
 });
 
 app.get('/register', function(req, res) {
-	res.render('register');
+	if (req.user) {
+		res.redirect('/goals');
+	} else {
+		res.render('register');
+	}
 });
 
 app.post('/register', function(req, res) {
@@ -105,17 +113,21 @@ app.post('/register', function(req, res) {
 });
 
 app.get('/goals', function(req, res) {
-	//check if currently working on catalog
-	//console.log(jquery);
-	const obj = req.user.catalogs[req.user.catalogs.length-1];
-	if (obj === undefined) {
-		res.render('goals');
-	} else if (obj.completed) {
-		res.render('goals');
+	if (!req.user) {
+		res.redirect('/login');
 	} else {
-		req.session.catalog = obj;
-		res.redirect('/home');
+		//check if currently working on catalog
+		const obj = req.user.catalogs[req.user.catalogs.length-1];
+		if (obj === undefined) {
+			res.render('goals');
+		} else if (obj.completed) {
+			res.render('goals');
+		} else {
+			req.session.catalog = obj;
+			res.redirect('/home');
+		}
 	}
+	
 	
 });
 
@@ -137,23 +149,29 @@ app.post('/goals', function(req, res) {
 });
 
 app.get('/home', function(req, res) {
-	res.render('home', {"todayCat": req.session.catalog,
+	if (!req.user) {
+		res.redirect('/login');
+	} else {
+		res.render('home', {"todayCat": req.session.catalog,
 		"foods": req.session.catalog.foods});
+	}
+});
+
+app.post('/home', function (req, res) {
+	req.user.catalogs[req.user.catalogs.length-1].completed = true;
+	req.user.save();
+	res.redirect('/goals');
 });
 
 app.get('/add', function(req, res) {
-	res.render('add');
+	if (!req.user) {
+		res.redirect('/login');
+	} else {
+		res.render('add');
+	}
 });
 
 app.post('/add', function(req, res) {
-	/*new Food({
-		name: req.body.name,
-		time: req.body.time,
-		price: req.body.price,
-		cals: req.body.cals
-	}).save( (err, food) => {*/
-		//update catalog
-		//replace with req.user
 		const f = new Food (req.body.name, req.body.time, req.body.price, req.body.cals);
 		req.session.catalog.foods.push(f);
 		req.session.catalog.curCal += Number(req.body.cals);
@@ -164,16 +182,39 @@ app.post('/add', function(req, res) {
 		req.user.catalogs[req.user.catalogs.length-1].curCal +=  Number(f.cals);
 		req.user.save();
 
-		/*Catalog.findOne({date: req.session.catalog.date}, (err, cat) => {
-			cat.foods.push(f);
-			cat.curMon += Number(f.price);
-			cat.curCal += Number(f.cals);
-			cat.save( function(err, c) {
-				console.log(c);
-			});
-		});*/
+		
 		res.redirect('/home');
-	//});
+});
+
+app.get('/lookup', function (req, res) {
+	res.render('lookup');
+});
+
+app.post('/lookup', function (req, res) {
+	const cats = req.user.catalogs;
+	//console.log(cats);
+	const result = cats.filter(x => {
+		//filter by date specified
+		const date = {
+			year: x.date.slice(0, 4),
+			month: x.date.slice(5, 7),
+			day: x.date.slice(8)
+		}
+		if (date.year === req.body.year) {
+			if (req.body.month !== "" && date.month == parseInt(req.body.month, 10)) {
+				if (req.body.day !== "" && date.day == parseInt(req.body.day, 10)) {
+					return true;
+				}
+			}
+		}
+		return false;
+	})[0];
+	if (result) {
+		res.render('lookup', {'date': result.date, 'result': result});
+	} else {
+		res.render('lookup', {'none': "Date Does Not Exist!"});
+	}
+	
 });
 
 app.get('/logout', function(req, res){

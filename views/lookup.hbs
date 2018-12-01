@@ -1,0 +1,55 @@
+<script src="search.js" type="text/javascript"></script>
+
+<a href="/home">Home</a>
+<br>
+
+<h3>Want to track your progress?</h3> 
+<h3>Search up a previous Catalog (YEAR-MO-DY): </h3>
+
+<div id="errmessage" class="handle"></div>
+
+<form name="myform" method="POST" action="/lookup" onsubmit="return validate(displayErr)">
+	Year: <input type="number" name="year"><br>
+	Month: <input type="number" name="month"><br>
+	Day: <input type="number" name="day"><br>
+	<input type="submit" value="Search">
+	<br>
+</form>
+
+<br>
+
+<h2>{{none}}</h2>
+
+{{#if result}}
+
+Here are your numbers on {{date}}!
+<br><br>
+Calorie Goal: {{result.calGoal}} &nbsp &nbsp 
+Monetary Goal: ${{result.monGoal}}
+<br>
+Current Calories: {{result.curCal}} &nbsp &nbsp
+Current $ Spent: ${{result.curMon}} <br><br>
+
+<table style="width:50%">
+  <tr>
+    <th>NAME</th>
+    <th>TIME</th> 
+    <th>PRICE</th>
+    <th>CALORIES</th>
+  </tr>
+{{#each result.foods}}
+	<tr>
+		<td>{{this.name}}</td>
+		<td>{{this.time}}</td>
+		<td>{{this.price}}</td>
+		<td>{{this.cals}}</td>
+	</tr>
+{{/each}}
+
+</table>
+
+{{/if}}
+
+
+
+
