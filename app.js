@@ -187,7 +187,11 @@ app.post('/add', function(req, res) {
 });
 
 app.get('/lookup', function (req, res) {
-	res.render('lookup');
+	if (!req.user) {
+		res.redirect('/login');
+	} else {
+		res.render('lookup');
+	}
 });
 
 app.post('/lookup', function (req, res) {

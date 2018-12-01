@@ -1,9 +1,13 @@
+<script src="newgoal.js" type="text/javascript"></script>
+
 <h3>Ready to start a new day? Please enter your goals for today: </h3>
 
-<form method="POST" action="/goals">
-	Caloric Goal: <input type="text" name="cal"><br>
-	Monetary Goal: <input type="text" name="mon"><br>
-	Date: <input type="text" name="date"><br>
+<div id="err" class="handle"></div>
+
+<form name="myform1" method="POST" action="/goals" onsubmit="return isCorrect(displayErr)">
+	Caloric Goal: <input type="number" name="cal" value=0><br>
+	Monetary Goal: <input type="number" name="mon" value=0><br>
+	Date (YEAR-MO-DY): <input type="text" name="date"><br>
 	<input type="submit">
 	<br>
 </form>

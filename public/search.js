@@ -19,14 +19,17 @@ function validate(validHelper) {
 	const d = document.myform.day.value;
 	if (y === "" || y != 2018) {
 		validHelper("Invalid Year");
+		console.log("Invalid Year");
 		return false;
 	}
 	else if (m === "" || (m < 1 || m > 12)) {
 		validHelper("Invalid Month");
+		console.log("Invalid Month");
 		return false;
 	}
 	else if (d === "" || (d < 1 || d > 31)) {
 		validHelper("Invalid Day");
+		console.log("Invalid Day");
 		return false;
 	}
 	else {
