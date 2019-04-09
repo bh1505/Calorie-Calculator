@@ -17,7 +17,7 @@ function validate(validHelper) {
 	const y = document.myform.year.value;
 	const m = document.myform.month.value;
 	const d = document.myform.day.value;
-	if (y === "" || y != 2018) {
+	if (y === "" || y > 2019 || y < 2018) {
 		validHelper("Invalid Year");
 		console.log("Invalid Year");
 		return false;

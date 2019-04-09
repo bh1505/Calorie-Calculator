@@ -190,8 +190,13 @@ app.post('/add', function(req, res) {
 app.get('/lookup', function (req, res) {
 	if (!req.user) {
 		res.redirect('/login');
-	} else {
-		res.render('lookup');
+	} else if (req.query.recent) {
+		const cats = req.user.catalogs;
+		const x = cats[cats.length-2];
+		res.render('lookup', {'date': x.date, 'result': x});
+	}
+	else {
+		res.render('lookup', {'searching' : true});
 	}
 });
 
@@ -215,9 +220,9 @@ app.post('/lookup', function (req, res) {
 		return false;
 	})[0];
 	if (result) {
-		res.render('lookup', {'date': result.date, 'result': result});
+		res.render('lookup', {'date': result.date, 'result': result, 'searching': true});
 	} else {
-		res.render('lookup', {'none': "Date Does Not Exist!"});
+		res.render('lookup', {'none': "Date Does Not Exist!", 'searching': true});
 	}
 	
 });
