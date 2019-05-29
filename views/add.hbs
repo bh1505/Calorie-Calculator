@@ -1,17 +1,19 @@
 <script src="addFood.js" type="text/javascript"></script>
 
-<a href="/home">Home</a>
-<br> <br>
-
-<h3>What did you eat?</h3>
-
-<div id="foodErr" class="handle"></div>
-
-<form name = "myform2" method="POST" action="/add" onsubmit="return check(handleErr)">
-	Name of Food: <input type="text" name="name"><br>
-	Time Eaten (0-23): <input type="number" name="time" value=0><br>
-	Price: <input type="number" name="price" value=0><br>
-	Calories: <input type="number" name="cals" value=0><br>
-	<input type="submit">
+<div class = "log">
+	<button class = "homeBtns" onclick="location.href = '/home'"> Home </button>
 	<br>
-</form>
+
+	<h3>What did you eat?</h3>
+
+	<div id="foodErr" class="handle"></div>
+
+	<form class = "entryForm" name = "myform2" method="POST" action="/add" onsubmit="return check(handleErr)">
+		<label>Name of Food:</label> <input type="text" name="name" autofocus><br>
+		<label>Time Eaten (0-23):</label> <input type="number" name="time"><br>
+		<label>Price ($):</label> <input type="number" name="price"><br>
+		<label>Calories:</label> <input type="number" name="cals"><br><br>
+		<input type="submit">
+		<br>
+	</form>
+</div>

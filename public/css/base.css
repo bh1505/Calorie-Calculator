@@ -1,38 +1,112 @@
 body {
-	background-color: rgb(160, 217, 253);
+	background-color: #5CDB95;
 	color: black;
-	font-family: Monaco;
+	font-family: Verdana;
 	text-align: center;
 	list-style-position: inside;
+}
+
+input[type="text"], input[type="password"], input[type="number"] {
+	font-size : 10pt;
+}
+
+.entryForm {
+	width : 500px;
+	display : inline-block;
+}
+
+.lookin {
+	width : 17%;
+}
+
+label.ul {
+	width : 20%;
+}
+
+label {
+	display: inline-block;
+	width : 33%;
+	text-align: left;
+	font-size : 105%;
+}
+
+@keyframes highlightEntry {
+    from {background: #5CDB95;}
+    to {background: white;}
+}
+
+#myTable tr:last-child {
+	animation: highlightEntry 2s;
+}
+
+.outBtn {
+	background-color:#5CDB95; /* Green */
+	text-decoration: none;
+	cursor: pointer;
+	border: none;
+	color: black;
+	padding: 4px 9px;
+	margin-top : 1px;
+	font-size: 13px;
+}
+
+#newDay, .homeBtns, input[type="submit"] {
+	background-color:#5CDB95; /* Green */
+	text-decoration: none;
+	cursor: pointer;
+	border: none;
+	color: black;
+	padding: 10px 20px;
+	font-size: 16px;
+}
+
+#heading {
+	color :  white;
+}
+
+.log {
+	border-radius: 25px;
+	border: 2px solid #73AD21;
+	padding: 20px;
+	background-color: white;
+	width : 550px;
+	display: inline-block;
 }
 
 table {
 	margin-left: auto;
     margin-right: auto;
     background-color: white;
-    color: navy;
+	/*color: #05386B;*/
 }
 
 td, th {
 	border: solid 1px navy;
 }
 
-i {
+#userDiv {
 	position: absolute;
 	top: 0;
-	right: 0;
-	padding-top: 5px;
-	padding-right: 5px;
-	text-align: right;
+	right : 0;
+	border-radius: 25px;
+	border: 2px solid #73AD21;
+	background-color: white;
+	width : 180px;
+	height : 48px;
+
 }
 
-a.logout {
-	position: absolute;
-	top: 0;
-	right: 0;
-	padding-top: 25px;
-	padding-right: 5px;
-	text-align: right;
+i {
+	position: relative;
+}
+
+a {
+	text-decoration: none;
+	color :  #5CDB95;
+}
+
+a:hover {
+	text-decoration: underline;
 }
 
 div.handle {

@@ -1,32 +1,41 @@
-Date: {{todayCat.date}}
-<br><br>
-Calorie Goal: {{todayCat.calGoal}} &nbsp &nbsp 
-Monetary Goal: ${{todayCat.monGoal}}
-<br>
-Current Calories: {{todayCat.curCal}} &nbsp &nbsp
-Current $ Spent: ${{todayCat.curMon}} <br><br>
+<div class = "log">
 
-<a href="/add">Add Food Entry</a> 
-<a href="/lookup">Search Catalogs</a> <br><br>
+	Date: {{todayCat.date}}
+	<br><br>
+	Calorie Goal: {{todayCat.calGoal}} &nbsp; &nbsp; 
+	Monetary Goal: ${{todayCat.monGoal}}
+	<br>
+	Current Calories: {{todayCat.curCal}} &nbsp; &nbsp;
+	Current $ Spent: ${{todayCat.curMon}} <br><br>
 
-<table style="width:50%">
-  <tr>
-    <th>NAME</th>
-    <th>TIME</th> 
-    <th>PRICE</th>
-    <th>CALORIES</th>
-  </tr>
-{{#each foods}}
-	<tr>
-		<td>{{this.name}}</td>
-		<td>{{this.time}}</td>
-		<td>{{this.price}}</td>
-		<td>{{this.cals}}</td>
-	</tr>
-{{/each}}
+	<button class = "homeBtns" onclick="location.href = '/add'"> Add Food Entry </button>
+	<button class = "homeBtns" onclick="location.href = '/lookup'"> Search Catalogs </button> <br><br> 
 
-</table>
+	{{#if newFood}}
+		<table style="width:96%" id = "myTable">
+	{{else}}
+		<table style="width:96%">
+	{{/if}}
+		<tr>
+			<th>Name</th>
+			<th>Time (0-23)</th> 
+			<th>Price ($)</th>
+			<th>Calories</th>
+		</tr>
+	{{#each foods}}
+		<tr>
+			<td>{{this.name}}</td>
+			<td>{{this.time}}</td>
+			<td>{{this.price}}</td>
+			<td>{{this.cals}}</td>
+		</tr>
+	{{/each}}
 
-<form method="POST" action="/home">
-	<input type="submit" value = "Start New Day">
-</form>
+	</table>
+
+	<br>
+	<form method="POST" action="/home">
+		<input id = "newDay" type="submit" value = "Start New Day">
+	</form>
+
+	</div>

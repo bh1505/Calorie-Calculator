@@ -1,15 +1,16 @@
-<h2>Log In</h3> 
+<div class = "log">
+	<h2>Log In</h3> 
 
-{{#if message}}
-	<div class="error">{{ message }}</div><br><br>
-{{/if}}
+	{{#if message}}
+		<div class="error">{{ message }}</div><br><br>
+	{{/if}}
 
-<form method="POST" action="/login">
-	username: <input name="username" type="text">	
-	password: <input name="password" type="password">	
-	<input type="submit" value="Log In">	
-</form>
+	<form method="POST" action="/login">
+		<label class = "ul">username:</label><input name="username" type="text" autofocus><br>
+		<label class = "ul">password:</label><input name="password" type="password"><br><br>
+		<input type="submit" value="Log In">	
+	</form>
 
-<br>
-
-Don't have an account? <a href="/register">Click Here</a> to register!
+	<br>
+	Don't have an account? <a href="/register">Click Here</a> to sign up!
+</div>

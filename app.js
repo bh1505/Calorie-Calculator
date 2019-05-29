@@ -44,6 +44,7 @@ app.use(passport.session());
 app.use(function(req, res, next) {
 	if (req.session.catalog === undefined) {
 		req.session.catalog = {};
+		req.session.isNewEntry = false;
 	}
 	next();
 });
@@ -134,8 +135,8 @@ app.get('/goals', function(req, res) {
 app.post('/goals', function(req, res) {
 	new Catalog({
 		date: req.body.date,
-		calGoal: req.body.cal,
-		monGoal: req.body.mon,
+		calGoal: Number(req.body.cal),
+		monGoal: Number(req.body.mon),
 		curCal: 0,
 		curMon: 0,
 		completed: false
@@ -153,7 +154,8 @@ app.get('/home', function(req, res) {
 		res.redirect('/login');
 	} else {
 		res.render('home', {"todayCat": req.session.catalog,
-		"foods": req.session.catalog.foods});
+		"foods": req.session.catalog.foods, "newFood": req.session.isNewEntry});
+		req.session.isNewEntry = false;
 	}
 });
 
@@ -174,7 +176,7 @@ app.get('/add', function(req, res) {
 
 app.post('/add', function(req, res) {
 	//add new food item to the session and user
-	const f = new Food (req.body.name, req.body.time, req.body.price, req.body.cals);
+	const f = new Food (req.body.name, req.body.time+":00", req.body.price, req.body.cals);
 	req.session.catalog.foods.push(f);
 	req.session.catalog.curCal += Number(req.body.cals);
 	req.session.catalog.curMon += Number(req.body.price);
@@ -184,6 +186,7 @@ app.post('/add', function(req, res) {
 	req.user.catalogs[req.user.catalogs.length-1].curCal +=  Number(f.cals);
 	req.user.save();
 
+	req.session.isNewEntry = true;
 	res.redirect('/home');
 });
 

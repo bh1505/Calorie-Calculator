@@ -17,14 +17,21 @@
   },
   "homepage": "https://github.com/nyu-csci-ua-0480-001-003-fall-2018/bh1505-final-project#readme",
   "dependencies": {
+    "@material-ui/core": "^4.0.0",
     "bcryptjs": "^2.4.3",
     "express": "^4.16.4",
     "express-session": "^1.15.6",
-    "hbs": "^4.0.1",
-    "jquery": "^3.3.1",
+    "hbs": "^4.0.4",
+    "jquery": "^3.4.1",
     "mongoose": "^5.3.10",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
-    "passport-local-mongoose": "^5.0.1"
+    "passport-local-mongoose": "^5.0.1",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.4.5",
+    "babel-core": "^6.26.3"
   }
 }
