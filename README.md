@@ -11,92 +11,36 @@ Each user will have their own catalog and will have the ability to set caloric a
 Once that's in place, 
 as the day goes by, the user can add foods they have eaten to their catalog. The user will be prompted to enter the name
 of the food, the time it was consumed, the price, and most importantly, the total calories. As the user continues 
-to add new items, the app will notify the user on certain milestones, such as "You have reached half of your goal!" or 
-"That just put you over your goal!". The user will be able to moderate their choices via a counter that displays how many 
+to add new items, the app will notify the user when they have reached the midpoint of their goals and when they have surpassed them. The user will be able to moderate their choices via a counter that displays how many 
 more calories they have left to reach their goal as well as another one that displays their total amount of money spent.
 For each day a user completes, that information will be stored so the user may
-look up their activity for a specific day or track their overall progress.
+track their progress over time with a feature that allows them to lookup previous catalogs by date.
 
 ## Data Model
 
-(TODO: a description of your application's data and their relationships to each other)
+The application will store Users and an array of Catalog documents for each daily entry made by a user.
 
-The application will store Users and a dictionary-like object for each user.
-The dictionary object will have keys set to the specified date of the catalog entry.
-Each key will be mapped to a list of foods (items) the user has ate on that day.
-The lists will also contain properties:
+A **User** will contain the following properties:
+- username (provided by passport)
+- password (provided by passport)
+- catalogs (array of Catalog documents)
+
+A **Catalog** will contain the following properties:
+- username (name of user that owns this catalog document)
 - calorieGoal (the caloric goal for the day)
-- calorieCount (the current caloric count for the day)
+- curCal (the current caloric count for the day)
 - moneyGoal (the monetary goal for the day)
-- moneyCount (the current monetary count for the day)
-
-(TODO: sample documents)
-
-An Example User:
-
-```
-{
-  username: "user123",
-  hash: //password hash,
-  catalog: //an object with key (date) and value (list of food items) pairs
-}
-```
-
-An Example catalog (dictionary) with Embedded Items:
-
-```
-{
-  username: //user,
-  catalog: { '2018-11-07' : [ {name: "cookie", time: "20", price: "2", cals: "250"},
-                              {name: "chicken and rice", time: "14", price: "10", cals: "500"} ],
-             '2018-11-06' : [ {name: "Chipotle Burrito", time: "12", price: "10", cals: "800"} ]
-           }
-}
-```
-
-## [Link to Commented First Draft Schema](db.js)
-
-## Wireframes
-
-(TODO: wireframes for all of the pages on your site; they can be as simple as photos of drawings or you can use a tool like Balsamiq, Omnigraffle, etc.)
-
-[/login](documentation/login.pdf)
-
-[/goals](documentation/goals.pdf)
-
-[/home](documentation/home.pdf)
-
-[/add](documentation/add.pdf)
-
-[/lookup](documentation/lookup.pdf)
-
-## [Link to Site map](documentation/sitemap.pdf)
+- curMon (the current monetary count for the day)
+- date (date of the current entry)
+- foods (a list of foods the user has ate on this date)
+- completed (determines if this catalog has been completed and saved)
 
 ## User Stories or Use Cases
 
 1. As a non-registered user, I can register a new account with site.
-2. As a user, I can log in to the site.
-3. As a user, I can add a new entry to my catalog, inputting my goals for today's date.
+2. As a user, I can log in to the site and.
+3. As a user, I can add a new entry to my personal catalog list, inputting my goals for the specified date.
 4. As a user, I can populate this new entry with food items I have ate throughout the day.
-5. As a user, I can view what I have eaten today, my goals for the day, the amount of calories I
+5. As a user, I can keep track of what I have eaten, my goals for the day, the amount of calories I
 have ate, and the amount of money I have spent.
-6. As a user, I can lookup previous entries in my catalog by providing a past date.
-
-## Research Topics
-
-- (5 points) Integrate user authentication 
-  - I will use Passport. 
-  - I have decided to use this so multiple people can use this app since no two people will
-  have the same food history. 
-  - Calorie Calculator involves private information that people may
-  not feel comfortable in sharing. 
-  - This allows a user to store several days of information and also lookup past eating/spending activity.
-- (3 points) Perform client side form validation 
-  - Since my app requires several entries from the user when adding a new food item, for example,
-  form validation is important in maintaining consistent data, especially when summing today's calories eaten.
-  - For example, if you put value for Time greater than 23, an error message will appear in the DOM.
- 
- 8 points out of 8 required points.
- 
- ## [Link to Initial Main Project File](app.js)
-
+6. As a user, I can track my progress by looking up previous entries in my catalog by providing a past date.
