@@ -16,6 +16,16 @@ more calories they have left to reach their goal as well as another one that dis
 For each day a user completes, that information will be stored so the user may
 track their progress over time with a feature that allows them to lookup previous catalogs by date.
 
+## User Experience
+
+### Creating a New Account
+
+![add](documentation/add.gif)
+
+### Looking Up Previous Catalogs
+
+![lookup](documentation/lookup.gif)
+
 ## Data Model
 
 The application will store Users and an array of Catalog documents for each daily entry made by a user.
