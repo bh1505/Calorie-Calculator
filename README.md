@@ -14,11 +14,18 @@ track their progress over time with a feature that allows them to lookup previou
 
 ### Creating a New Account
 
+![landing](documentation/landing.png)
+
+### Caloric Intake Suggestions
+
+![cal](documentation/bmr.png)
+
+### Adding a New Food
 ![add](documentation/add.gif)
 
 ### Looking Up Previous Catalogs
 
-![lookup](documentation/lookup.gif)
+![search](documentation/search.png)
 
 ## Data Model
 
