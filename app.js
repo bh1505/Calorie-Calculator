@@ -55,7 +55,7 @@ app.use(function(req, res, next){
 });
 
 app.get('/', function(req, res) {
-	res.redirect('/login');
+	res.redirect('/register');
 })
 
 app.get('/login', function(req, res) {
@@ -116,20 +116,52 @@ app.post('/register', function(req, res) {
 app.get('/goals', function(req, res) {
 	if (!req.user) {
 		res.redirect('/login');
+	} else if (req.query.update) {
+		res.render("goals", {"calcBMR" : true});
+	} else if (req.query.weight) {
+			let bmr = 0;
+			if (req.query.gender === "male") {
+				bmr = Math.round(66 + (6.23 * req.query.weight) + (12.7 * req.query.height) - (6.8 * req.query.age));
+			}
+			else {
+				bmr = Math.round(655 + (4.35 * req.query.weight) + (4.7 * req.query.height) - (4.7 * req.query.age));
+			}
+			console.log("bmr: " +  bmr);
+			let maint = 0;
+			if (req.query.life === "sedentary") {
+				maint = bmr * 1.2
+			} else if (req.query.life === "slight") {
+				maint = bmr * 1.375;
+			} else if (req.query.life === "moderate") {
+				maint = bmr * 1.55;
+			} else if (req.query.life === "active") {
+				maint = bmr * 1.725;
+			} else if (req.query.life === "very") {
+				maint = bmr * 1.9;
+			}
+			console.log("to maintain: " + maint);
+			maint = Math.round(maint);
+			req.user.myBMR = bmr;
+			req.user.myMaint = maint;
+			req.user.myWeight = req.query.weight;
+			req.user.save();
+			res.render("goals", {"mybmr": bmr, "mymaint" : maint, "mylose" : maint - 500, "mygain" : maint + 500});
 	} else {
 		//upload current catalog, otherwise ask for new entry
 		const obj = req.user.catalogs[req.user.catalogs.length-1];
 		if (obj === undefined) {
-			res.render('goals');
+			res.render('goals', {"calcBMR" : true});
 		} else if (obj.completed) {
-			res.render('goals');
+			//send in req.user.myBMR and mymaint, have link that renders goals with calcBMR to true
+			res.render("goals", {"mybmr": req.user.myBMR, "mymaint" : req.user.myMaint, 
+				"mylose" : req.user.myMaint - 500, "mygain" : req.user.myMaint + 500});
 		} else {
 			req.session.catalog = obj;
 			res.redirect('/home');
 		}
 	}
 	
-	
+
 });
 
 app.post('/goals', function(req, res) {
@@ -139,7 +171,8 @@ app.post('/goals', function(req, res) {
 		monGoal: Number(req.body.mon),
 		curCal: 0,
 		curMon: 0,
-		completed: false
+		completed: false,
+		weight: req.user.myWeight
 	}).save( (err, cat) => {
 		//console.log(err);
 		req.session.catalog = cat;
@@ -196,7 +229,7 @@ app.get('/lookup', function (req, res) {
 	} else if (req.query.recent) {
 		const cats = req.user.catalogs;
 		const x = cats[cats.length-2];
-		res.render('lookup', {'date': x.date, 'result': x});
+		res.render('lookup', {'date': x.date, 'result': x, 'myweight' : x.weight});
 	}
 	else {
 		res.render('lookup', {'searching' : true});
@@ -223,7 +256,7 @@ app.post('/lookup', function (req, res) {
 		return false;
 	})[0];
 	if (result) {
-		res.render('lookup', {'date': result.date, 'result': result, 'searching': true});
+		res.render('lookup', {'date': result.date, 'result': result, 'searching': true, 'myweight' : result.weight});
 	} else {
 		res.render('lookup', {'none': "Date Does Not Exist!", 'searching': true});
 	}

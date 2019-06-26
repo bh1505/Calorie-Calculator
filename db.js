@@ -10,15 +10,18 @@ const Catalog = new mongoose.Schema({
 	curCal: Number,
 	curMon: Number,
 	foods: Array,
-	completed: Boolean //determines whether user's latest catalog is complete for the day
+	completed: Boolean,
+	weight: Number
 });
 
 //schema for new User
 const User = new mongoose.Schema({
 	//username: provided by passport
 	//password: provided by passport
-	catalogs: [Catalog] //dictionary like object to store dates mapped to lists of food
-
+	catalogs: [Catalog],
+	myBMR: Number,
+	myMaint: Number,
+	myWeight: Number
 });
 
 User.plugin(passportLocalMongoose);

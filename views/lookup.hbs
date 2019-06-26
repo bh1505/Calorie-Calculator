@@ -26,13 +26,14 @@
 
 	{{#if result}}
 
-	Here are your numbers on {{date}}!
+	Here are your numbers on <b>{{date}}!</b>
 	<br><br>
-	Calorie Goal: {{result.calGoal}} &nbsp &nbsp 
+	Calorie Goal: {{result.calGoal}} &nbsp; &nbsp; 
 	Monetary Goal: ${{result.monGoal}}
 	<br>
-	Current Calories: {{result.curCal}} &nbsp &nbsp
-	Current $ Spent: ${{result.curMon}} <br><br>
+	Calories Eaten: <b>{{result.curCal}}</b> &nbsp; &nbsp;
+	$ Spent: <b>${{result.curMon}}</b> <br>
+	Weight: <b>{{myweight}}</b><br><br>
 
 	<table style="width:96%">
 	<tr>

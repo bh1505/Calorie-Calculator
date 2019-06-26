@@ -1,14 +1,16 @@
+<script src="home.js" type="text/javascript"></script>
+
 <div class = "log">
 
 	Date: {{todayCat.date}}
 	<br><br>
-	Calorie Goal: {{todayCat.calGoal}} &nbsp; &nbsp; 
-	Monetary Goal: ${{todayCat.monGoal}}
+	Calorie Goal: <span id = "cg">{{todayCat.calGoal}}</span> &nbsp; 
+	Monetary Goal: <span id = "mg">${{todayCat.monGoal}}</span>
 	<br>
-	Current Calories: {{todayCat.curCal}} &nbsp; &nbsp;
-	Current $ Spent: ${{todayCat.curMon}} <br><br>
+	Current Calories: <span class = "changes" id = "cc">{{todayCat.curCal}}</span> &nbsp;
+	Current $ Spent: <span class = "changes" id = "cm">${{todayCat.curMon}}</span><br><br>
 
-	<button class = "homeBtns" onclick="location.href = '/add'"> Add Food Entry </button>
+	<button class = "homeBtns" onclick="location.href = '/add'"> Add Food Entry </button> &nbsp;
 	<button class = "homeBtns" onclick="location.href = '/lookup'"> Search Catalogs </button> <br><br> 
 
 	{{#if newFood}}

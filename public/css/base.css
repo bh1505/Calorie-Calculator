@@ -6,6 +6,7 @@ body {
 	list-style-position: inside;
 }
 
+
 input[type="text"], input[type="password"], input[type="number"] {
 	font-size : 10pt;
 }
@@ -78,6 +79,10 @@ table {
     margin-right: auto;
     background-color: white;
 	/*color: #05386B;*/
+}
+
+#mes {
+	
 }
 
 td, th {

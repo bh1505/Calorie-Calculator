@@ -1,6 +1,10 @@
 <div class = "log">
 
-	<h2>Create Your Account</h3>
+	<p>Welcome! By calculating your <b>basal metabolic rate (BMR)</b>,
+		the calories used to maintain your basic bodily functions, we can help you reach your weight goals! 
+		Let's get started!</p>
+
+	<h3>Create Your Account</h3>
 
 	{{#if message}}
 		<div class="error">{{ message }}</div><br><br>
@@ -11,4 +15,7 @@
 		<label class = "ul">password:</label><input name="password" type="password"> <br><br>
 		<input type="submit" value="Register">	
 	</form>
+
+	<br>
+	Already have an account? <a href="/login">Click Here</a> to log in!
 </div>
